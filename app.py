@@ -77,7 +77,13 @@ def run():
         predict_but.draw(window)
         reset_but.draw(window)
 
-    os.remove("data/to_predict.jpg")
+    
+    # Apaga o desenho do usuário para não ficar na pasta lá
+    try:
+        os.remove("data/to_predict.jpg")
+    except FileNotFoundError:
+        pass
+
     pg.quit()
 
 
