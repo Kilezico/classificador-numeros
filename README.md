@@ -1,4 +1,5 @@
 # Projeto Classificador de Números
+!["Ocorrência rara dele funcionando /j"](images/print-funciona.png "Classificador classificando")
 ## Resumo
 Projeto pessoal de machine learning que consiste em classificar um número escrito pelo usuário, ou seja dizer que número é de 0 a 9.
 Os dados de treino foram desenhados por mim e guardados nos arquivos *data/data.npy* e *data/labels.npy*, que foram usados para treinar o modelo
@@ -34,8 +35,10 @@ Com o programa aberto, basta desenhar na áera branca com o mouse. \
 Clique no botão "Reset" ou pressione 'R' para apagar a tela. \
 Clique no botão "Predict" ou pressione 'S' para classificar o desenho.
 
+!["Print do programa com a janela vazia"](images/print-vazia.png "Janela Vazia")
+
 ## Conclusão
-O projeto ainda não está perfeito: nem sempre ele acerta o número escrito, mas foi um bom jeito para introduzir o
+O projeto ainda não está perfeito: o modelo nem sempre acerta os números (especialmente se desenhados muito pequenos ou parecidos com outros), mas foi um bom jeito para introduzir o
 conceito de machine learning para mim e também aprender um pouco sobre técnicas de manipulação de imagens em OpenCV, como Crop, Resize, etc.
 \
 \
@@ -45,3 +48,5 @@ diferentes, desenhar números para o treino também, deixando o modelo mais abra
 \
 \
 Planejo algum dia implementar essas ideias que tive para tentar conseguir um resultado melhor, mas por enquanto, estou feliz com o resultado que obtive.
+
+!["Print do programa com um rostinho sorridente"](images/print-feliz.png "Feliz")
