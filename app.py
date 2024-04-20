@@ -1,5 +1,6 @@
 import pygame as pg
 from tkinter import messagebox
+import os
 
 from src.classifierModel import ClassifierModel
 from src.button import Button
@@ -76,6 +77,7 @@ def run():
         predict_but.draw(window)
         reset_but.draw(window)
 
+    os.remove("data/to_predict.jpg")
     pg.quit()
 
 
