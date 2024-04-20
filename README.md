@@ -49,4 +49,6 @@ diferentes, desenhar números para o treino também, deixando o modelo mais abra
 \
 Planejo algum dia implementar essas ideias que tive para tentar conseguir um resultado melhor, mas por enquanto, estou feliz com o resultado que obtive.
 
+---
+
 !["Print do programa com um rostinho sorridente"](images/print-feliz.png "Feliz")
