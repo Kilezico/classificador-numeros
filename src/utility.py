@@ -15,42 +15,52 @@ def collision_point_rect(point, rect):
 def modify_images(img): # AINDA NÃO ESTÁ SENDO UTILIZADA
     # Função usada para modificar os dados na coleta de dados 
     # e também para a imagem para prever.
+    # Imagens recebidas serão exclusivamente quadradas e em grayscale
 
-    # 1. Crop (para deixar o número mais centralizado e maior)
-    shrink = True
-    cropped = img
-    while shrink:
-        cropped = cropped[1:-1, 0:-1]
-        # Vê se tocou no desenho
-        for i in range(len(cropped)):
-            if cropped[0][i] == 0 or cropped[i][0] == 0:
-                shrink = False
-    # Canto superior direito
-    shrink = True
-    while shrink:
-        cropped = cropped[1:-1, 0:-2]
-        # Vê se tocou no desenho
-        for i in range(len(cropped)):
-            if cropped[0][i] == 0 or cropped[i][-1] == 0:
-                shrink = False
-    # Canto inferior esquerdo
-    shrink = True
-    while shrink:
-        cropped = cropped[0:-2, 1:-1]
-        for i in range(len(cropped)):
-            if cropped[-1][i] == 0 or cropped[i][0] == 0:
-                shrink = False
-    shrink = True
-    while shrink:
-        cropped = cropped[0:-2, 0:-2]
-        for i in range(len(cropped)):
-            if cropped[-1][i] == 0 or cropped[i][-1] == 0:
-                shrink = False
     
-    # 2. Resize (Compromisso entre qualidade e quantidade de parâmetros)
-    cropped = cv2.resize(cropped, (50, 50))
+    # 1. Threshold (Imagem binária: fundo=0; tinta=1)
+    _, new_img = cv2.threshold(img, 127, 1, cv2.THRESH_BINARY_INV)
 
-    # 3. Threshold (Trocar a cor do fundo, para o fundo ser 0)
-    _, cropped = cv2.threshold(cropped, 127, 255, cv2.THRESH_BINARY_INV)
+    # 2. Crop (para deixar o número mais centralizado e maior)
+    # 2.1 Canto superior esquerdo
+    shrink = True
+    while shrink:
+        # Vê se tocou no desenho
+        for i in range(len(new_img)):
+            if new_img[0][i] == 1 or new_img[i][0] == 1:
+                shrink = False
+        # Diminui
+        if shrink:
+            new_img = new_img[1:, 1:]
+    # 2.2 Canto superior direito
+    shrink = True
+    while shrink:
+        # Vê se tocou no desenho
+        for i in range(len(new_img)):
+            if new_img[0][i] == 1 or new_img[i][-1] == 1:
+                shrink = False
+        # Diminui
+        if shrink:
+            new_img = new_img[1:, :-1] # -1 no topo, -1 da direita 
+    # 2.3 Canto inferior esquerdo
+    shrink = True
+    while shrink:
+        for i in range(len(new_img)):
+            if new_img[-1][i] == 1 or new_img[i][0] == 1:
+                shrink = False
+        if shrink:
+            new_img = new_img[:-1, 1:]
+    # 2.4 Canto inferior direito
+    shrink = True
+    while shrink:
+        for i in range(len(new_img)):
+            if new_img[-1][i] == 1 or new_img[i][-1] == 1:
+                shrink = False
+        if shrink:
+            new_img = new_img[:-1, :-1]
+    
+    # 3. Resize (Para o treino não ser muito demorado, mas ainda ser possível
+    #            identificar os números).
+    new_img = cv2.resize(new_img, (50, 50), interpolation=cv2.INTER_CUBIC)
 
-    return cropped
+    return new_img

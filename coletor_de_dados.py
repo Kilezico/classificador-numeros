@@ -1,10 +1,7 @@
 import pygame as pg
 from tkinter import *
-from tkinter import messagebox
-import pickle
 import cv2
 
-from src.classifierModel import ClassifierModel
 from src.button import Button
 from src.drawSurface import DrawSurface
 from src.utility import *
@@ -25,9 +22,6 @@ def run():
     # Superfície onde serão desenhado os dígitos
     draw_surface = DrawSurface(400, 400)
     contador_de_imagens = 1
-
-    # Modelo treinado para reconhecer dígitos
-    # classifier = ClassifierModel("adivinha.pkl")
 
     font = pg.font.SysFont("Arial", 30)
 
@@ -76,7 +70,6 @@ def run():
         
         predict_but.draw(window)
         reset_but.draw(window)
-
 
     pg.quit()
 
