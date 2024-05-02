@@ -23,7 +23,6 @@ def run():
 
     # Superfície onde serão desenhado os dígitos
     draw_surface = DrawSurface(400, 400)
-    contador_de_imagens = 1
 
     # Modelo treinado para reconhecer dígitos
     classifier = ClassifierModel("adivinha.pkl")
@@ -81,6 +80,7 @@ def run():
     # Apaga o desenho do usuário para não ficar na pasta lá
     try:
         os.remove("data/to_predict.jpg")
+        print("'data/to_predict.jpg' removed")
     except FileNotFoundError:
         pass
 
