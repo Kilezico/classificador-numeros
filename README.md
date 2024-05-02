@@ -1,14 +1,19 @@
 # Projeto Classificador de Números
 !["Ocorrência rara dele funcionando /j"](images/print-funciona.png "Classificador classificando")
 ## Resumo
-Projeto pessoal de machine learning que consiste em classificar um número escrito pelo usuário, ou seja dizer que número é de 0 a 9.
-Os dados de treino foram desenhados por mim e guardados nos arquivos *data/data.npy* e *data/labels.npy*, que foram usados para treinar o modelo
+Projeto pessoal de machine learning que consiste em classificar um algarismo escrito pelo usuário, ou seja dizer que número é de 0 a 9.
+Os dados de treino foram desenhados por mim e guardados nos arquivos *data/data.npy* e *data/labels.npy*, que foram usados para treinar um modelo
 SVM (Support Vector Machine), mais especificamente, o SVC (C-Support Vector Classification). 
 
 ## Objetivo
 O objetivo desse projeto é conhecer e ganhar um pouco de experiência prática em algumas das bibliotecas mais usadas em python como numpy, matplotlib, scikit-learn e opencv-python.
 
 ## Como rodar
+
+### Pré-requisitos
+- Ter python instalado
+- Ter git instalado
+
 Siga os seguintes passos para rodar o projeto:
 1. Clonar o repositório
 ```console
