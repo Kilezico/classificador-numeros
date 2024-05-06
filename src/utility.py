@@ -30,7 +30,9 @@ def modify_images(img): # AINDA NÃO ESTÁ SENDO UTILIZADA
             if new_img[0][i] == 1 or new_img[i][0] == 1:
                 shrink = False
         # Diminui
-        if shrink:
+        if len(new_img) <= 1: # Deve ser uma imagem em branco; sai.
+            shrink = False
+        elif shrink: # Se o lado do quadrado for maior que 1, pode "shrinkar"
             new_img = new_img[1:, 1:]
     # 2.2 Canto superior direito
     shrink = True
@@ -40,7 +42,9 @@ def modify_images(img): # AINDA NÃO ESTÁ SENDO UTILIZADA
             if new_img[0][i] == 1 or new_img[i][-1] == 1:
                 shrink = False
         # Diminui
-        if shrink:
+        if len(new_img) <= 1: # Deve ser uma imagem em branco; sai.
+            shrink = False
+        elif shrink:
             new_img = new_img[1:, :-1] # -1 no topo, -1 da direita 
     # 2.3 Canto inferior esquerdo
     shrink = True
@@ -48,7 +52,9 @@ def modify_images(img): # AINDA NÃO ESTÁ SENDO UTILIZADA
         for i in range(len(new_img)):
             if new_img[-1][i] == 1 or new_img[i][0] == 1:
                 shrink = False
-        if shrink:
+        if len(new_img) <= 1: # Deve ser uma imagem em branco; sai.
+            shrink = False
+        elif shrink:
             new_img = new_img[:-1, 1:]
     # 2.4 Canto inferior direito
     shrink = True
@@ -56,7 +62,9 @@ def modify_images(img): # AINDA NÃO ESTÁ SENDO UTILIZADA
         for i in range(len(new_img)):
             if new_img[-1][i] == 1 or new_img[i][-1] == 1:
                 shrink = False
-        if shrink:
+        if len(new_img) <= 1: # Deve ser uma imagem em branco; sai.
+            shrink = False
+        elif shrink:
             new_img = new_img[:-1, :-1]
     
     # 3. Resize (Para o treino não ser muito demorado, mas ainda ser possível
