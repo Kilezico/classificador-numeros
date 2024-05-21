@@ -42,5 +42,5 @@ class DrawSurface:
     def reset(self):
         self.surface.fill((255, 255, 255))
     
-    def save_image(self, path_to_save):
-        pg.image.save(self.surface, path_to_save)
+    def get_image(self):
+        return pg.surfarray.array3d(self.surface)

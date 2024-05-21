@@ -15,11 +15,13 @@ def collision_point_rect(point, rect):
 def modify_images(img): # AINDA NÃO ESTÁ SENDO UTILIZADA
     # Função usada para modificar os dados na coleta de dados 
     # e também para a imagem para prever.
-    # Imagens recebidas serão exclusivamente quadradas e em grayscale
+    # Imagens recebidas serão exclusivamente quadradas
 
+    # 0. Deixa em grayscale
+    new_img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
     
     # 1. Threshold (Imagem binária: fundo=0; tinta=1)
-    _, new_img = cv2.threshold(img, 127, 1, cv2.THRESH_BINARY_INV)
+    _, new_img = cv2.threshold(new_img, 127, 1, cv2.THRESH_BINARY_INV)
 
     # 2. Crop (para deixar o número mais centralizado e maior)
     # 2.1 Canto superior esquerdo

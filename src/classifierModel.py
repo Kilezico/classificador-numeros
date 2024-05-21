@@ -11,12 +11,9 @@ class ClassifierModel:
         with open(path_to_pickled_model, 'rb') as f:
             self.model = pickle.load(f)
         
-    def predict(self, file_to_jpeg):
-        # Lê a imagem
-        image = cv2.imread(file_to_jpeg, cv2.IMREAD_GRAYSCALE)
-        
+    def predict(self, img):
         # Processa a imagem para poder utilizá-la no modelo
-        image = utility.modify_images(image)
+        image = utility.modify_images(img)
 
         # # Mostra a imagem para propósitos de debugging
         # plt.imshow(image, cmap='gray')
