@@ -1,6 +1,7 @@
 import pygame as pg
 from tkinter import *
 import cv2
+import numpy as np
 
 from src.button import Button
 from src.drawSurface import DrawSurface
@@ -21,7 +22,8 @@ def run():
 
     # Superfície onde serão desenhado os dígitos
     draw_surface = DrawSurface(400, 400)
-    contador_de_imagens = 1
+    saved_images = np.empty((0, 400, 400, 3), dtype=np.uint8)
+    save_path = "data/new_data.npy"
 
     font = pg.font.SysFont("Arial", 30)
 
@@ -51,10 +53,10 @@ def run():
                     r_was_pressed = True
         
         if predict_but.get_pressed() or s_was_pressed:
-            path = f"data/data{contador_de_imagens:03}.jpg"
-            draw_surface.save_image(path)
-            contador_de_imagens += 1
-            print("Image saved to", path)
+            # surface_image = draw_surface.get_image()
+            # print(surface_image.shape)
+            saved_images = np.append(saved_images, draw_surface.get_image().reshape((1, 400, 400, 3)), axis=0)
+            print("Image saved.", len(saved_images), "so far.")
         if reset_but.get_pressed() or r_was_pressed:
             draw_surface.reset()
         
@@ -70,6 +72,10 @@ def run():
         
         predict_but.draw(window)
         reset_but.draw(window)
+    
+    # Aqui no fim do programa, salvamos as imagens na pasta "data" para usar depois
+    np.save(save_path, saved_images)
+    print(f"Images saved to '{save_path}'")
 
     pg.quit()
 
