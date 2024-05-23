@@ -57,7 +57,7 @@ def run():
         if predict_but.get_pressed() or s_was_pressed:
             pred_img = draw_surface.get_image()
             pred = classifier.predict(pred_img)
-            messagebox.showinfo(title="Adivinha Número", message=f"Eu acho que você desenhou o número {pred[0]}")
+            messagebox.showinfo(title="Adivinha Número", message=f"Eu acho que você desenhou o caractere {pred[0]}")
             print("Prediction: ", pred)
         if reset_but.get_pressed() or r_was_pressed:
             draw_surface.reset()
