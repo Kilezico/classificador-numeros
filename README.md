@@ -1,5 +1,10 @@
 # Projeto Classificador de Números
 !["Ocorrência rara dele funcionando /j"](images/print-funciona.png "Classificador classificando")
+
+# Branch "operators"
+Essa branch tem o modelo treinado não só em algarismos numéricos, mas também em alguns operadores matemáticos, como +, -, ×, ÷. \
+Esse modelo treinado também em operadores retorna labels do tipo *str* em vez do tipo *int*, pois isso faz mais sentido para o meu projeto de Calculadora Manual.
+
 ## Resumo
 Projeto pessoal de machine learning que consiste em classificar um algarismo escrito pelo usuário, ou seja dizer que número é de 0 a 9.
 Os dados de treino foram desenhados por mim e guardados nos arquivos *data/data.npy* e *data/labels.npy*, que foram usados para treinar um modelo
