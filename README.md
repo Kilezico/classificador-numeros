@@ -1,9 +1,12 @@
 # Projeto Classificador de Números
-!["Ocorrência rara dele funcionando /j"](images/print-funciona.png "Classificador classificando")
+!["Ocorrência rara dele funcionando :0 /j"](images/print-funciona.png "Classificador classificando")
 
 # Branch "operators"
 Essa branch tem o modelo treinado não só em algarismos numéricos, mas também em alguns operadores matemáticos, como +, -, ×, ÷. \
 Esse modelo treinado também em operadores retorna labels do tipo *str* em vez do tipo *int*, pois isso faz mais sentido para o meu projeto de Calculadora Manual.
+
+Atualmente o modelo classfica os seguintes caracteres:
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, +, -, ×, ÷.
 
 ## Resumo
 Projeto pessoal de machine learning que consiste em classificar um algarismo escrito pelo usuário, ou seja dizer que número é de 0 a 9.
